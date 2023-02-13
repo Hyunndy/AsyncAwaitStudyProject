@@ -101,10 +101,21 @@ class ViewController: UIViewController {
         let (data, response) = try await URLSession.shared.data(for: request)
         guard (response as? HTTPURLResponse)?.statusCode == 200 else { throw HyunndyError.badId }
         let maybeImage = UIImage(data: data)
-        guard let thumbnail = await maybeImage?.byPreparingThumbnail(ofSize: CGSize(width: 40.0, height: 40.0)) else { return HyunndyError.noImage }
+        guard let thumbnail = await maybeImage?.thumbnail else { throw HyunndyError.noImage }
         return thumbnail
     }
 }
+
+extension UIImage {
+    var thumbnail: UIImage? {
+        get async {
+            let size = CGSize(width: 40.0, height: 40.0)
+            return await self.byPreparingThumbnail(ofSize: size)
+        }
+    }
+}
+
+
 
 
 
