@@ -18,6 +18,8 @@
 		02950F5629991BB90022676A /* AsyncAwaitStudyProjectUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02950F5529991BB90022676A /* AsyncAwaitStudyProjectUITestsLaunchTests.swift */; };
 		02950F63299A826C0022676A /* WWDC21_ConcurrentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02950F62299A826C0022676A /* WWDC21_ConcurrentViewController.swift */; };
 		02950F8A299E6FDE0022676A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02950F89299E6FDE0022676A /* MainViewController.swift */; };
+		02950F8C299E7AC20022676A /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02950F8B299E7AC20022676A /* MainViewModel.swift */; };
+		02950F8E299E7B230022676A /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02950F8D299E7B230022676A /* APIService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		02950F5529991BB90022676A /* AsyncAwaitStudyProjectUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncAwaitStudyProjectUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		02950F62299A826C0022676A /* WWDC21_ConcurrentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WWDC21_ConcurrentViewController.swift; sourceTree = "<group>"; };
 		02950F89299E6FDE0022676A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		02950F8B299E7AC20022676A /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		02950F8D299E7B230022676A /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +115,8 @@
 				02950F3D29991BB90022676A /* LaunchScreen.storyboard */,
 				02950F4029991BB90022676A /* Info.plist */,
 				02950F89299E6FDE0022676A /* MainViewController.swift */,
+				02950F8B299E7AC20022676A /* MainViewModel.swift */,
+				02950F8D299E7B230022676A /* APIService.swift */,
 			);
 			path = AsyncAwaitStudyProject;
 			sourceTree = "<group>";
@@ -273,10 +279,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				02950F3729991BB70022676A /* WWDC21_AsyncAwaitViewController.swift in Sources */,
+				02950F8E299E7B230022676A /* APIService.swift in Sources */,
 				02950F63299A826C0022676A /* WWDC21_ConcurrentViewController.swift in Sources */,
 				02950F3329991BB70022676A /* AppDelegate.swift in Sources */,
 				02950F3529991BB70022676A /* SceneDelegate.swift in Sources */,
 				02950F8A299E6FDE0022676A /* MainViewController.swift in Sources */,
+				02950F8C299E7AC20022676A /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
