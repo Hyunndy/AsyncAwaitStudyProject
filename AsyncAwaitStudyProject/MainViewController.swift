@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol asyncPropertyProtocol {
-    var thumbnailWithAsync: [String] { get async throws }
+    var thumbnailWithAsync: [String] { get async throws } //아아
 }
 
 /*
