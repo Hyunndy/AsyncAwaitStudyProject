@@ -8,10 +8,21 @@
 import Foundation
 import UIKit
 
+protocol asyncPropertyProtocol {
+    var thumbnailWithAsync: [String] { get async throws }
+}
+
 /*
  Async/awit 예시 ViewController
  */
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, asyncPropertyProtocol {
+   
+    /// 프로퍼티 + async/await
+    var thumbnailWithAsync: [String] {
+        get async throws {
+            return try await self.viewModel.fetchTitle3()
+        }
+    }
 
     var createLabel: (() -> UILabel) = {
         let label = UILabel()
@@ -24,6 +35,7 @@ class MainViewController: UIViewController {
         return label
     }
     
+    /// Task관리를 위한 Array
     var taskArray = [Task<(), Never>]()
     
     @IBOutlet weak var containerStackView: UIStackView!
@@ -81,5 +93,49 @@ class MainViewController: UIViewController {
             }
         }
         self.taskArray.append(asyncletTask)
+        
+        let taskGroupTask = Task {
+            do {
+                let paragraph = try await self.viewModel.fetchTitle4()
+                let label = self.createLabel()
+                label.text = "Task-Group \n" + (paragraph.last ?? "")
+                self.containerStackView.addArrangedSubview(label)
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        }
+        self.taskArray.append(taskGroupTask)
+        
+        let unStructuredTask = Task {
+            do {
+                let request = URLRequest(url: self.viewModel.getURL(paragraph: 5))
+                let (data, response) = try await URLSession.shared.data(for: request)
+                guard (response as? HTTPURLResponse)?.statusCode == 200 else {
+                    throw HyunndyError.badNetwork
+                }
+    
+                let paragraph = try JSONDecoder().decode([String].self, from: data)
+                let label = self.createLabel()
+                label.text = "UnStructrued Task \n" + (paragraph.last ?? "")
+                self.containerStackView.addArrangedSubview(label)
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        }
+        
+        self.taskArray.append(unStructuredTask)
+        
+        let propertyTask = Task {
+            do {
+                let paragraph = try await self.thumbnailWithAsync
+                let label = self.createLabel()
+                label.text = "ProperyWithAsync \n" + (paragraph.last ?? "")
+                self.containerStackView.addArrangedSubview(label)
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        }
+        
+        self.taskArray.append(propertyTask)
     }
 }

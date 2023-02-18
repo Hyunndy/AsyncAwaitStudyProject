@@ -88,6 +88,30 @@ final class MainViewModel {
         let paragraph = try JSONDecoder().decode([String].self, from: try await data)
         return paragraph
     }
+    
+    /*
+     4번
+     Task Group
+     using withThrowingTaskGroup ~
+     */
+    func fetchTitle4() async throws -> [String] {
+        
+        var titleArray = [String]()
+        
+        try await withThrowingTaskGroup(of: [String].self, body: { group in
+            
+            group.addTask {
+                return try await self.fetchTitle3()
+            }
+            
+            for try await taskResult in group {
+                titleArray.append(contentsOf: taskResult)
+            }
+        })
+        
+        return titleArray
+    }
+    
 }
 
 
