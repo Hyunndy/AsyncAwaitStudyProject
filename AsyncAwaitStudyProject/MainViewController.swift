@@ -60,16 +60,16 @@ class MainViewController: UIViewController, asyncPropertyProtocol {
         self.viewModel.fetchTitle(completion: { result in
             switch result {
             case .success(let data):
-                
+
                 let label = self.createLabel()
                 label.text = "competionHandler \n" + (data.last ?? "")
                 self.containerStackView.addArrangedSubview(label)
-                
+
             case .failure(let failure):
                 print("API FAIL = \(failure.localizedDescription)")
             }
         })
-        
+
         let asyncAwaitTask = Task {
             do {
                 let paragraph = try await self.viewModel.fetchTitle2()
@@ -81,7 +81,7 @@ class MainViewController: UIViewController, asyncPropertyProtocol {
             }
         }
         self.taskArray.append(asyncAwaitTask)
-        
+
         let asyncletTask = Task {
             do {
                 let paragraph = try await self.viewModel.fetchTitle3()
@@ -93,7 +93,7 @@ class MainViewController: UIViewController, asyncPropertyProtocol {
             }
         }
         self.taskArray.append(asyncletTask)
-        
+
         let taskGroupTask = Task {
             do {
                 let paragraph = try await self.viewModel.fetchTitle4()
@@ -105,7 +105,7 @@ class MainViewController: UIViewController, asyncPropertyProtocol {
             }
         }
         self.taskArray.append(taskGroupTask)
-        
+
         let unStructuredTask = Task {
             do {
                 let request = URLRequest(url: self.viewModel.getURL(paragraph: 5))
@@ -113,7 +113,7 @@ class MainViewController: UIViewController, asyncPropertyProtocol {
                 guard (response as? HTTPURLResponse)?.statusCode == 200 else {
                     throw HyunndyError.badNetwork
                 }
-    
+
                 let paragraph = try JSONDecoder().decode([String].self, from: data)
                 let label = self.createLabel()
                 label.text = "UnStructrued Task \n" + (paragraph.last ?? "")
@@ -122,9 +122,9 @@ class MainViewController: UIViewController, asyncPropertyProtocol {
                 print(error.localizedDescription)
             }
         }
-        
+
         self.taskArray.append(unStructuredTask)
-        
+
         let propertyTask = Task {
             do {
                 let paragraph = try await self.thumbnailWithAsync
@@ -135,7 +135,19 @@ class MainViewController: UIViewController, asyncPropertyProtocol {
                 print(error.localizedDescription)
             }
         }
-        
+
         self.taskArray.append(propertyTask)
+        
+        let alamofireTask = Task {
+            do {
+                let paragraph = try await self.viewModel.fetchTitle5()
+                let label = self.createLabel()
+                label.text = "AlamofireAsync \n" + (paragraph.last ?? "")
+                self.containerStackView.addArrangedSubview(label)
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        }
+        self.taskArray.append(alamofireTask)
     }
 }

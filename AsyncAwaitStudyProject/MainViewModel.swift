@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 enum HyunndyError: Error {
     case badId
@@ -89,7 +90,7 @@ final class MainViewModel {
         return paragraph
     }
     
-    /*
+    /**
      4번
      Task Group
      using withThrowingTaskGroup ~
@@ -112,6 +113,21 @@ final class MainViewModel {
         return titleArray
     }
     
+    /**
+     5번
+     Alamofire + Async/await
+     */
+    func fetchTitle5() async throws -> [String] {
+        
+        let request = URLRequest(url: self.getURL(paragraph: 1))
+//        let value = try await AF.request(request).serializingDecodable([String].self).value
+        
+        let dataTask = AF.request(request).serializingDecodable([String].self)
+        
+        let value = try await dataTask.value
+        
+        return value
+    }
 }
 
 
