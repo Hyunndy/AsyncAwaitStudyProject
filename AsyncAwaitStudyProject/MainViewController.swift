@@ -45,7 +45,7 @@ class MainViewController: UIViewController, asyncPropertyProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fetch()
+//        fetch()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

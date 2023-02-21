@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		02950F3329991BB70022676A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02950F3229991BB70022676A /* AppDelegate.swift */; };
-		02950F3529991BB70022676A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02950F3429991BB70022676A /* SceneDelegate.swift */; };
 		02950F3729991BB70022676A /* WWDC21_AsyncAwaitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02950F3629991BB70022676A /* WWDC21_AsyncAwaitViewController.swift */; };
 		02950F3A29991BB70022676A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02950F3829991BB70022676A /* Main.storyboard */; };
 		02950F3C29991BB90022676A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02950F3B29991BB90022676A /* Assets.xcassets */; };
@@ -43,7 +42,6 @@
 /* Begin PBXFileReference section */
 		02950F2F29991BB70022676A /* AsyncAwaitStudyProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AsyncAwaitStudyProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02950F3229991BB70022676A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		02950F3429991BB70022676A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		02950F3629991BB70022676A /* WWDC21_AsyncAwaitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WWDC21_AsyncAwaitViewController.swift; sourceTree = "<group>"; };
 		02950F3929991BB70022676A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		02950F3B29991BB90022676A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -111,7 +109,6 @@
 			children = (
 				02950F88299E6EE80022676A /* WWDC */,
 				02950F3229991BB70022676A /* AppDelegate.swift */,
-				02950F3429991BB70022676A /* SceneDelegate.swift */,
 				02950F3829991BB70022676A /* Main.storyboard */,
 				02950F3B29991BB90022676A /* Assets.xcassets */,
 				02950F3D29991BB90022676A /* LaunchScreen.storyboard */,
@@ -290,7 +287,6 @@
 				02950F8E299E7B230022676A /* APIService.swift in Sources */,
 				02950F63299A826C0022676A /* WWDC21_ConcurrentViewController.swift in Sources */,
 				02950F3329991BB70022676A /* AppDelegate.swift in Sources */,
-				02950F3529991BB70022676A /* SceneDelegate.swift in Sources */,
 				02950F8A299E6FDE0022676A /* MainViewController.swift in Sources */,
 				02950F8C299E7AC20022676A /* MainViewModel.swift in Sources */,
 			);
