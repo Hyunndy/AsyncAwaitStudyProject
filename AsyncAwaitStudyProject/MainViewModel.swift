@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import UIKit
 
 enum HyunndyError: Error {
     case badId
@@ -18,9 +19,23 @@ enum HyunndyError: Error {
  Async/await 학습 viewModel 객체
  */
 final class MainViewModel {
+    
+    func getImageURL(width: Int, height: Int) -> URL {
+        return URL(string: "https://baconmockup.com/\(width)/\(height)")!
+    }
 
     func getURL(paragraph: Int) -> URL {
         return URL(string: "https://baconipsum.com/api/?type=all-meat&paras=\(paragraph)&start-with-lorem=1")!
+    }
+    
+    // 1. 캐시 생성
+    let imageCache = NSCache<NSString, UIImage>()
+    
+    init() {
+        
+        // 2. 캐시 정책 설립
+        imageCache.countLimit = 20
+        imageCache.totalCostLimit = 10 * 1024 * 1024 // byte 기준이므로 10MB
     }
     
     /**
@@ -88,6 +103,39 @@ final class MainViewModel {
         
         let paragraph = try JSONDecoder().decode([String].self, from: try await data)
         return paragraph
+    }
+    
+    /**
+     6번
+     이미지 받아오기 + async-let
+     */
+    
+    
+    func fetchImage() async throws -> UIImage? {
+        
+        // 3. Check cache for image
+        if let cacheImage = imageCache.object(forKey: "randomImage") {
+            print("캐싱된 이미지 가져왔나요?")
+            return cacheImage
+        }
+        
+        // Download Image asynchronously
+        let request = URLRequest(url: self.getImageURL(width: 100, height: 100))
+        async let (data, response) = URLSession.shared.data(for: request)
+        guard (try await response as? HTTPURLResponse)?.statusCode == 200 else {
+            throw HyunndyError.badNetwork
+        }
+        
+        guard let image = UIImage(data: try await data) else {
+            throw HyunndyError.badNetwork
+        }
+        
+        // 4. 이미지 캐시
+        imageCache.setObject(image, forKey: "randomImage")
+        
+        return image
+        // Cache Image
+        
     }
     
     /**

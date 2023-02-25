@@ -35,6 +35,8 @@ class MainViewController: UIViewController, asyncPropertyProtocol {
         return label
     }
     
+    var imageView = UIImageView()
+    
     /// Task관리를 위한 Array
     var taskArray = [Task<(), Never>]()
     
@@ -42,10 +44,21 @@ class MainViewController: UIViewController, asyncPropertyProtocol {
     
     let viewModel = MainViewModel()
     
+    override func loadView() {
+        super.loadView()
+        
+        self.containerStackView.addArrangedSubview(self.imageView)
+        self.imageView.heightAnchor.constraint(equalToConstant: 300.0).isActive = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        fetch()
+//        fetchString()
+        fetchImage()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
+            self.fetchImage()
+        })
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -56,7 +69,24 @@ class MainViewController: UIViewController, asyncPropertyProtocol {
         }
     }
     
-    private func fetch() {
+    private func fetchImage() {
+        let asyncAwaitTask = Task {
+            do {
+                let image = try await self.viewModel.fetchImage()
+                
+                self.imageView.image = image
+                print(image)
+                
+                
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        
+        self.taskArray.append(asyncAwaitTask)
+    }
+    
+    private func fetchString() {
         self.viewModel.fetchTitle(completion: { result in
             switch result {
             case .success(let data):
