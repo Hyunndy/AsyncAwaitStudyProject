@@ -56,6 +56,7 @@
 		02950F89299E6FDE0022676A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		02950F8B299E7AC20022676A /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		02950F8D299E7B230022676A /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		02C473EF29AB63C6003DCB2E /* AsyncAwaitStudyProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AsyncAwaitStudyProject.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +108,7 @@
 		02950F3129991BB70022676A /* AsyncAwaitStudyProject */ = {
 			isa = PBXGroup;
 			children = (
+				02C473EF29AB63C6003DCB2E /* AsyncAwaitStudyProject.entitlements */,
 				02950F88299E6EE80022676A /* WWDC */,
 				02950F3229991BB70022676A /* AppDelegate.swift */,
 				02950F3829991BB70022676A /* Main.storyboard */,
@@ -463,6 +465,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = AsyncAwaitStudyProject/AsyncAwaitStudyProject.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8AN45VBDM4;
@@ -491,6 +494,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = AsyncAwaitStudyProject/AsyncAwaitStudyProject.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8AN45VBDM4;

@@ -20,6 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
         
         registerBackgroundTasks()
         
+        // 여기선 launch 시에 했지만, launch가 끝나고 사용자에게 알림 허용 등의 권한 체크를 먼저 하고 수락하면 진행하는게 좀 더 깔끔합니다.
+        UIApplication.shared.registerForRemoteNotifications()
+        
         return true
     }
     
@@ -133,5 +136,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
     }
 
 
+}
+
+// MARK: APNs
+extension AppDelegate {
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        print("APNs으로 부터 받은 디바이스 토큰:" + deviceToken.description)
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("APNs 등록 및 디바이스 토큰 받기 실패:" + error.localizedDescription)
+    }
 }
 

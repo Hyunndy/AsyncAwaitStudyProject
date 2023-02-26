@@ -113,7 +113,7 @@ final class MainViewModel {
     
     func fetchImage() async throws -> UIImage? {
         
-        // 3. Check cache for image
+        // 3. 캐시된 이미지 객체 체크
         if let cacheImage = imageCache.object(forKey: "randomImage") {
             print("캐싱된 이미지 가져왔나요?")
             return cacheImage
@@ -134,8 +134,6 @@ final class MainViewModel {
         imageCache.setObject(image, forKey: "randomImage")
         
         return image
-        // Cache Image
-        
     }
     
     /**
